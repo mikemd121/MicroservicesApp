@@ -1,0 +1,30 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/rate/sync",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "rates-service",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/rateservice",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/position/create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "positions-service",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/positionservice",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}
