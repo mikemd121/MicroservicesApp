@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: positions-service
+  labels:
+    app: positions-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: positions-service
+  template:
+    metadata:
+      labels:
+        app: positions-service
+    spec:
+      containers:
+        - name: positions-service
+          image: akscontainerregistry01.azurecr.io/positionserviceimage:v1
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"

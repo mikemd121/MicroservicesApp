@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rates-service
+  labels:
+    app: rates-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rates-service
+  template:
+    metadata:
+      labels:
+        app: rates-service
+    spec:
+      containers:
+        - name: rates-service
+          image: akscontainerregistry01.azurecr.io/rateserviceimage:v1
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
